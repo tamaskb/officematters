@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{../css/index.css}" />
+<title>Welcome to Office Matters!</title>
+</head>
+<body>
+
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>Welcome to the Office Matters homepage!</h1>
+			<p>Please select below what you want to do</p>
+		</div>
+	</div>
+	<div class="container text-center">
+	<a th:href="@{/request}" class="btn btn-info" role="button">Submit
+		a new request!</a>
+	<a th:href="@{/maintenance}" class="btn btn-info" role="button">Maintenance
+		team page</a>
+	</div>
+
+</body>
+</html>

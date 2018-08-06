@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{../css/index.css}" />
+<title>Submit a new request</title>
+</head>
+<body>
+
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>Here you can submit a new request</h1>
+			<p>Type in your details</p>
+		</div>
+	</div>
+	<div class="container">
+		<h2>New Request</h2>
+		<form th:action="@{/request}" th:object="${request}" method="post"
+			action="/request">
+			<label>Reporter name*: </label> <input type="text"
+				th:field="*{fullName}" />
+			<p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName)">Name
+				error</p>
+			<br> <label>E-mail*: </label> <input type="email"
+				th:field="*{emailAddress}" />
+			<p th:if="${#fields.hasErrors('emailAddress')}"
+				th:errors="*{emailAddress)">Email error</p>
+			<br> <br> <label>Subject*: </label> <input type="text"
+				th:field="*{subject}" />
+			<p th:if="${#fields.hasErrors('subject')}" th:errors="*{subject)">Subject
+				error</p>
+			<br> <label>Description*: </label> <input type="text"
+				th:field="*{description}" />
+			<p th:if="${#fields.hasErrors('description')}"
+				th:errors="*{description)">Description error</p>
+			<br> *mandatory fields <br> <br>
+
+			<button type="submit">Submit request</button>
+
+		</form>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+title {
+	font-family: "Museo";
+}
+
+body {
+	font-family: "Source Sans Pro";
+	background-color: #CEDB56;
+}
+
+.jumbotron {
+	background-color: #222222;
+}
+
+.container {
+	color: #ffffff;
+}
