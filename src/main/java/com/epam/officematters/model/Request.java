@@ -1,6 +1,7 @@
 package com.epam.officematters.model;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -8,19 +9,19 @@ import javax.validation.constraints.Size;
 
 public class Request {
 	
-	@NotNull
+	@NotBlank(message="Please enter Your name!")
 	private String fullName;
 	
-	@Email
-	@NotNull
+	@Email(message="Please enter Your email address!")
+	@NotNull(message="Please enter Your email address!")
 	private String emailAddress;
 	
-	@NotNull
-	@Size(min=3, max=15)
+	@NotNull(message="Please enter the subject of Your problem!")
+	@Size(min=3, max=15, message="Length restriction: minimum 3, maximum 15 characters!")
 	private String subject;
 	
-	@NotNull
-	@Size(min=5)
+	@NotNull(message="Please describe Your problem!")
+	@Size(min=5, message="Description must be at least 5 characters!")
 	private String description;
 	
 	public Request () {

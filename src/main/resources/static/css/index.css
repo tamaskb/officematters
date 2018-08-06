@@ -5,6 +5,7 @@ title {
 body {
 	font-family: "Source Sans Pro";
 	background-color: #CEDB56;
+
 }
 
 .jumbotron {
@@ -13,4 +14,16 @@ body {
 
 .container {
 	color: #ffffff;
+}
+
+label {
+	color: #000000
+}
+
+input {
+	color: black;
+}
+
+.validation-error {
+	color: red;
 }

@@ -20,12 +20,12 @@ public class RequestController {
 		return "request";
 	}
 	
-	@PostMapping
-	public String submitRequestForm (@Valid @ModelAttribute Request request, BindingResult result) {
+	@PostMapping("/request")
+	public String submitRequestForm (@Valid @ModelAttribute ("request") Request request, BindingResult result) {
 		if (result.hasErrors()) {
-			return "redirect:request";
+			return "request";
 		} else {
-			return "confirmation";
+			return "redirect:/confirmation";
 		}
 	}
 	
