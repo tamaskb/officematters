@@ -1,10 +1,26 @@
 package com.epam.officematters.model;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+
+
 public class Request {
 	
+	@NotNull
 	private String fullName;
+	
+	@Email
+	@NotNull
 	private String emailAddress;
+	
+	@NotNull
+	@Size(min=3, max=15)
 	private String subject;
+	
+	@NotNull
+	@Size(min=5)
 	private String description;
 	
 	public Request () {

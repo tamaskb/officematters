@@ -5,22 +5,20 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 <link rel="stylesheet" th:href="@{../css/index.css}" />
-<title>Welcome to Office Matters!</title>
+<title>Submit a new request</title>
 </head>
 <body>
 
 	<div class="jumbotron">
 		<div class="container text-center">
-			<h1>Welcome to the Office Matters home page!</h1>
-			<p>Please select below what you want to do</p>
+			<h1>Maintenance team dashboard</h1>
+			<p>Current requests</p>
 		</div>
 	</div>
-	<div class="container text-center">
-	<a th:href="@{/request}" class="btn btn-info" role="button">Submit
-		a new request!</a>
-	<a th:href="@{/maintenance}" class="btn btn-info" role="button">Maintenance
-		team page</a>
+	<div class="container text-left">
+		<a th:href="@{/}" class="btn btn-info" role="button">Back to the home page</a> 
 	</div>
+
 
 </body>
 </html>
