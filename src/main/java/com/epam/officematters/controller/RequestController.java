@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.epam.officematters.model.Request;
 import com.epam.officematters.service.RequestService;
+import com.epam.officematters.service.exception.RequestAlreadyExistsException;
 
 @Controller
 public class RequestController {
@@ -28,7 +29,7 @@ public class RequestController {
 	}
 		
 	@PostMapping(PATH_REQUEST)
-	public String submitRequest (@Valid @ModelAttribute (REQUEST_FORM_ATTRIBUTE) Request request, BindingResult result) {
+	public String submitRequest (@Valid @ModelAttribute (REQUEST_FORM_ATTRIBUTE) Request request, BindingResult result) throws RequestAlreadyExistsException {
 		if (result.hasErrors()) {
 			return REQUEST_FORM;
 		} else {
