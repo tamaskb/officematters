@@ -17,35 +17,28 @@
 	</div>
 	<div class="container">
 		<h2>New Request</h2>
-		<form th:action="@{/request}" th:object="${request}" method="post">
+		<form th:action="@{/request}" th:object="${requestForm}" method="post" action="/request">
 			<label>Reporter name*: </label> 
-			<input type="text"
-				th:field="*{fullName}" />
-			<p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" class="validation-error">Name
-				error</p>
+			<input type="text" th:field="*{fullName}" />
+			<p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" class="validation-error">Name error</p>
 			<br> 
 			
 			<label>E-mail*: </label>
-			<input type="email"
-				th:field="*{emailAddress}" />
+			<input type="email"	th:field="*{emailAddress}" />
 			<p th:if="${#fields.hasErrors('emailAddress')}"
 				th:errors="*{emailAddress}" class="validation-error">Email error</p>
 				
 			<br> <br> 
 			
 			<label>Subject*: </label> 
-			<input type="text"
-				th:field="*{subject}" />
-			<p th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}" class="validation-error">Subject
-				error</p>
+			<input type="text" th:field="*{subject}" />
+			<p th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}" class="validation-error">Subject error</p>
 				
 			<br> 
 			
 			<label>Description*: </label> 
-			<input type="text"
-				th:field="*{description}" />
-			<p th:if="${#fields.hasErrors('description')}"
-				th:errors="*{description}" class="validation-error">Description error</p>
+			<input type="text" th:field="*{description}" />
+			<p th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="validation-error">Description error</p>
 			<br>
 			
 			 *mandatory fields 
