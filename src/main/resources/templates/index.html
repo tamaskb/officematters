@@ -18,6 +18,26 @@
 	<div class="container text-right">
 	<a th:href="@{/request}" class="btn btn-info" role="button">Submit a new request!</a>
 	</div>
-
+	<div class="container">
+		<div class="row">
+		<div class="col-lg-4">
+		<table class="table table-hover">
+    		<thead>
+      			<tr>
+			      <th class="text-center" colspan="4"><h3>New Requests</h3></th>
+      			</tr>
+    		</thead>
+    		<tbody>
+			<tr th:each="request: ${request}">
+    			<td th:text="${request.fullName}" />
+    			<td th:text="${request.emailAddress}" />
+    			<td th:text="${request.subject}" />
+    			<td th:text="${request.description}" />
+			</tr>
+    		</tbody>
+  </table>
+	</div>
+		</div>
+</div>
 </body>
 </html>

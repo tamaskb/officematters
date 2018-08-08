@@ -1,5 +1,7 @@
 package com.epam.officematters.repository;
 
+import java.util.List;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -11,5 +13,8 @@ import com.epam.officematters.model.Request;
 public interface RequestRepository {
 	
 	void save (@NotNull @Valid Request request);
+	
+	List<Request> listRequests();
+
 
 }

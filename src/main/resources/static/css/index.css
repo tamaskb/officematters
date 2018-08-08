@@ -27,3 +27,11 @@ input {
 .validation-error {
 	color: red;
 }
+
+.table-hover tbody {
+	background-color: #76cdd8;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #008ACE;
+}

@@ -1,5 +1,7 @@
 package com.epam.officematters.service;
 
+import java.util.List;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -12,5 +14,8 @@ import com.epam.officematters.service.exception.RequestAlreadyExistsException;
 public interface RequestService {
 	
 	void register(@NotNull @Valid Request request) throws RequestAlreadyExistsException;
+	
+	@NotNull
+	List<Request> getRequests();
 	
 }
