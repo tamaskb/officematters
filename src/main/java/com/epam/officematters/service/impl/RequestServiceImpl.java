@@ -42,6 +42,12 @@ public class RequestServiceImpl implements RequestService {
 		
 		return repository.listRequests();
 	}
+
+	@Override
+	@Transactional
+	public Request getRequestById( int id) {
+		return repository.findRequestById(id);
+	}
 	
 	
 

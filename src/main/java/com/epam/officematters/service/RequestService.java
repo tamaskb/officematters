@@ -18,4 +18,6 @@ public interface RequestService {
 	@NotNull
 	List<Request> getRequests();
 	
+	Request getRequestById (int id);
+	
 }

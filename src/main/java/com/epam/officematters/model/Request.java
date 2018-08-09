@@ -23,6 +23,26 @@ public class Request {
 	@Size(min=5, message="Description must be at least 5 characters!")
 	private String description;
 	
+	private int id;
+	
+	private int progressStatus; // 0=new, 1=in progress, 2=resolved
+	
+	public int getProgressStatus() {
+		return progressStatus;
+	}
+
+	public void setProgressStatus(int progressStatus) {
+		this.progressStatus = 0;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public Request () {
 		
 	}

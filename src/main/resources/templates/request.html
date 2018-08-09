@@ -18,6 +18,9 @@
 	<div class="container">
 		<h2>New Request</h2>
 		<form th:action="@{/request}" th:object="${requestForm}" method="post" action="/request">
+			<div class="container">
+			<div class="row">
+			<div class="col-lg-8">
 			<label>Reporter name*: </label> 
 			<input type="text" th:field="*{fullName}" />
 			<p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" class="validation-error">Name error</p>
@@ -44,12 +47,18 @@
 			 *mandatory fields 
 			 
 			<br> <br>
-
+			</div>
+			<div class="col-lg-4">
+				<h1>Your name, email address and your request will be visible for everyone</h1>
+			</div>
+			</div>
+			</div>
 			<button class="btn btn-info" type="submit">Submit request</button>
 
 		</form>
 	</div>
-	
+
+
 	<div class="container text-left">
 		<a th:href="@{/}" class="btn btn-info" role="button">Back to the home page</a> 
 	</div>

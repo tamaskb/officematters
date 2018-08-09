@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,7 @@ public class RequestRepositoryImpl implements RequestRepository {
 		@Override
 		public Request mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Request r = new Request();
+			r.setId(rs.getInt("id"));
 			r.setFullName(rs.getString("name"));
 			r.setEmailAddress(rs.getString("email"));
 			r.setSubject(rs.getString("subject"));
@@ -40,9 +43,10 @@ public class RequestRepositoryImpl implements RequestRepository {
 	};
 	
 	@Override
+	@Transactional
 	public void save(Request request) {
 		
-		logger.info("saving now: {}" + request);
+		logger.info("saving now: " + request);
 		
         final String sql = "INSERT INTO requests (name, email, subject, description) VALUES ( ?, ?, ?, ?)";
 		jdbcTemplate.update(sql, request.getFullName(), request.getEmailAddress(), request.getSubject(), request.getDescription());
@@ -53,6 +57,31 @@ public class RequestRepositoryImpl implements RequestRepository {
 				
 		return jdbcTemplate.query(sql, mapper);
 	}
+
+	private final RowMapper<Request> requestMapper = new RowMapper<Request>() {
+		
+		public Request mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Request r = new Request();
+			r.setId(rs.getInt("id"));
+			r.setFullName(rs.getString("name"));
+			r.setEmailAddress(rs.getString("email"));
+			r.setSubject(rs.getString("subject"));
+			r.setDescription(rs.getString("description"));
+			
+			return r;
+		}
+	};
+	
+	@Override
+	public Request findRequestById( int id) {
+		logger.info("found request by id: " + id);
+		
+		final String sql = "SELECT * FROM requests WHERE id = " + id;
+		
+		return jdbcTemplate.queryForObject(sql, requestMapper);
+		
+	}
+
 
 
 }

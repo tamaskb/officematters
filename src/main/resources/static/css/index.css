@@ -16,12 +16,20 @@ body {
 	color: #ffffff;
 }
 
+.container.requests{
+	background-color: #CEDB56;
+}
+
 label {
-	color: #000000
+	color: #000000;
 }
 
 input {
 	color: black;
+}
+
+textarea {
+	background-color: #008ACE;
 }
 
 .validation-error {

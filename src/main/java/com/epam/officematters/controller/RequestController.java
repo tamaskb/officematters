@@ -1,8 +1,10 @@
 package com.epam.officematters.controller;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,8 +31,11 @@ public class RequestController {
 	}
 		
 	@PostMapping(PATH_REQUEST)
-	public String submitRequest (@Valid @ModelAttribute (REQUEST_FORM_ATTRIBUTE) Request request, BindingResult result) throws RequestAlreadyExistsException {
+	public String submitRequest (@Valid @ModelAttribute (REQUEST_FORM_ATTRIBUTE) Request request, BindingResult result, HttpServletResponse response) 
+			throws RequestAlreadyExistsException {
 		if (result.hasErrors()) {
+			response.setStatus(HttpStatus.BAD_REQUEST.value());
+			result.reject("requestForm.error.incompleteInput");
 			return REQUEST_FORM;
 		} else {
 			requestService.register(request);			

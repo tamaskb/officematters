@@ -16,5 +16,6 @@ public interface RequestRepository {
 	
 	List<Request> listRequests();
 
+	Request findRequestById(int id);
 
 }
