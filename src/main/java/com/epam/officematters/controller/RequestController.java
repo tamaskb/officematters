@@ -17,33 +17,30 @@ import com.epam.officematters.service.exception.RequestAlreadyExistsException;
 
 @Controller
 public class RequestController {
-	
+
 	private static final String REQUEST_FORM = "request";
 	private static final String REQUEST_FORM_ATTRIBUTE = "requestForm";
 	private static final String PATH_REQUEST = "/request";
-	
+
 	@Autowired
 	private RequestService requestService;
 
 	@GetMapping(PATH_REQUEST)
-	public String getRequestForm (@ModelAttribute (REQUEST_FORM_ATTRIBUTE) Request r) {
+	public String getRequestForm(@ModelAttribute(REQUEST_FORM_ATTRIBUTE) Request r) {
 		return REQUEST_FORM;
 	}
-		
+
 	@PostMapping(PATH_REQUEST)
-	public String submitRequest (@Valid @ModelAttribute (REQUEST_FORM_ATTRIBUTE) Request request, BindingResult result, HttpServletResponse response) 
-			throws RequestAlreadyExistsException {
+	public String submitRequest(@Valid @ModelAttribute(REQUEST_FORM_ATTRIBUTE) Request request, BindingResult result,
+			HttpServletResponse response) throws RequestAlreadyExistsException {
 		if (result.hasErrors()) {
 			response.setStatus(HttpStatus.BAD_REQUEST.value());
 			result.reject("requestForm.error.incompleteInput");
 			return REQUEST_FORM;
 		} else {
-			requestService.register(request);			
+			requestService.register(request);
 			return "redirect:/confirmation";
 		}
 	}
-	
-	
-	
 
 }

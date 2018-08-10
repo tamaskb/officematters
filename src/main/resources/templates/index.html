@@ -16,56 +16,68 @@
 		</div>
 	</div>
 	<div class="container text-right">
-	<a th:href="@{/request}" class="btn btn-info" role="button">Submit a new request!</a>
+		<a th:href="@{/request}" class="btn btn-info" role="button">Submit
+			a new request!</a>
 	</div>
 	<div class="container requests">
 		<div class="row">
 			<div class="col-lg-4">
-				<form>
 				<table class="table table-hover">
-		    		<thead>
-		      			<tr>
-					      <th class="text-center" colspan="2"><h3>New Requests</h3></th>
-		      			</tr>
-		    		</thead>
-		    		<tbody>
-					<tr th:each="request: ${request}">
-						<td><p th:text="${request.subject}" />
-						<p th:text="${request.fullName}" /></td>
-		    			<td><a th:href="@{'/comment/'+ ${request.getId()}}" class="btn tbn-info" role="button" >Check details</a></td>
-					</tr>
-		    		</tbody>
-		  		</table>
-		  		</form>
+					<thead>
+						<tr>
+							<th class="text-center" colspan="2"><h3>New Requests</h3></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="requestNew: ${requestNew}">
+							<td><p th:text="${requestNew.subject}" />
+								<p th:text="${requestNew.fullName}" /></td>
+							<td><a th:href="@{'/comment/'+ ${requestNew.getId()}}"
+								class="btn tbn-info" role="button">Check details</a></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-			
-			
+
+
 			<div class="col-lg-4">
-				<form>
 				<table class="table table-hover">
-		    		<thead>
-		      			<tr>
-					      <th class="text-center" colspan="2"><h3>In-Progress</h3></th>
-		      			</tr>
-		    		</thead>
-		    		<tbody>
-		    		</tbody>
-		  		</table>
-		  		</form>
+					<thead>
+						<tr>
+							<th class="text-center" colspan="2"><h3>In-Progress</h3></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="requestInProgress: ${requestInProgress} ">
+							<td><p th:text="${requestInProgress.subject}" />
+								<p th:text="${requestInProgress.fullName}" /></td>
+							<td><a
+								th:href="@{'/comment/'+ ${requestInProgress.getId()}}"
+								class="btn tbn-info" role="button">Check details</a></td>
+						</tr>
+
+					</tbody>
+				</table>
 			</div>
-			
-						<div class="col-lg-4">
+
+			<div class="col-lg-4">
 				<table class="table table-hover">
-		    		<thead>
-		      			<tr>
-					      <th class="text-center" colspan="2"><h3>Resolved</h3></th>
-		      			</tr>
-		    		</thead>
-		    		<tbody>
-		    		</tbody>
-		  		</table>
+					<thead>
+						<tr>
+							<th class="text-center" colspan="2"><h3>Resolved</h3></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="requestResolved: ${requestResolved}">
+							<td><p th:text="${requestResolved.subject}" />
+								<p th:text="${requestResolved.fullName}" /></td>
+							<td><a th:href="@{'/comment/'+ ${requestResolved.getId()}}"
+								class="btn tbn-info" role="button">Check details</a></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
-</div>
+	</div>
 </body>
 </html>

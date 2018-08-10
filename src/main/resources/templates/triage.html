@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{../css/index.css}" />
+<title>Requests waiting for triage</title>
+</head>
+<body>
+
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>Triage requests page</h1>
+			<p>Triage these</p>
+		</div>
+	</div>
+	<div class="container text-center">
+				<form>
+					<table class="table table-hover">
+		    		<thead>
+		      			<tr>
+					      <th class="text-center" colspan="2"><h3>Requests waiting for triage</h3></th>
+		      			</tr>
+		    		</thead>
+		    		<tbody>
+					<tr th:each="request: ${request}">
+						<td><p th:text="${request.subject}" />
+						<p th:text="${request.fullName}" /></td>
+		    			<td><a th:href="@{'/triagerequest/'+ ${request.getId()}}" class="btn tbn-info" role="button" >Assign to someone</a></td>
+					</tr>
+		    		</tbody>
+		  		</table>
+				</form>
+			</div>	
+</body>
+</html>

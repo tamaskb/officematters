@@ -14,10 +14,15 @@ import com.epam.officematters.service.exception.RequestAlreadyExistsException;
 public interface RequestService {
 	
 	void register(@NotNull @Valid Request request) throws RequestAlreadyExistsException;
-	
-	@NotNull
-	List<Request> getRequests();
-	
+		
 	Request getRequestById (int id);
 	
+	List<Request> getNewRequests();
+	
+	List<Request> getInprogressRequests();
+	
+	List<Request> getResolvedRequests();
+	
+	void changeRequestToInProgress(Request request, int id);
+		
 }

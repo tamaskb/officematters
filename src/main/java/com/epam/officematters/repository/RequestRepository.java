@@ -14,8 +14,14 @@ public interface RequestRepository {
 	
 	void save (@NotNull @Valid Request request);
 	
-	List<Request> listRequests();
-
 	Request findRequestById(int id);
-
+	
+	List<Request> listNewRequests();
+	
+	List<Request> listInProgressRequests();
+	
+	List<Request> listResolvedRequests();
+	
+	void pushRequestToInProgress(Request request, int id);
+	
 }

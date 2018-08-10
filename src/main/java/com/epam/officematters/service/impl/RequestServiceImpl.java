@@ -37,18 +37,35 @@ public class RequestServiceImpl implements RequestService {
 		}
 	}
 
-	@Override
-	public @NotNull List<Request> getRequests() {
-		
-		return repository.listRequests();
-	}
 
 	@Override
 	@Transactional
 	public Request getRequestById( int id) {
 		return repository.findRequestById(id);
 	}
+
+	@Override
+	public List<Request> getNewRequests() {
+		return repository.listNewRequests();
+	}
+	
+	@Override
+	public List<Request> getInprogressRequests() {
+		return repository.listInProgressRequests();
+	}
+
+
+	@Override
+	public List<Request> getResolvedRequests() {
+		return repository.listResolvedRequests();
+	}
 	
 	
+	@Override
+	public void changeRequestToInProgress(Request request, int id) {
+		repository.pushRequestToInProgress(request, id);
+		
+	}
+
 
 }

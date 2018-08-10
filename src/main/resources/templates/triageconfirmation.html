@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{../css/index.css}" />
+<title>Well done!</title>
+</head>
+<body>
+
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>The status of this request is now: In Progress.</h1>
+			<p>Thank you.</p>
+		</div>
+	</div>
+	
+	<div class="container text-center">
+		<a th:href="@{/triage}" class="btn btn-info" role="button">Back to triage page</a> 
+	</div>
+
+
+</body>
+</html>

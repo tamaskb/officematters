@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{../css/index.css}" />
+<title>Welcome to Office Matters!</title>
+</head>
+<body>
+
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>Request details</h1>
+			<p>Add priority or assign to someone</p>
+		</div>
+	</div>
+
+	<div class="container text-center">
+	
+	<p th:text="${request.fullName}"/>
+	<p th:text="${request.emailAddress}"/>
+	<p th:text="${request.subject}"/>
+	<p th:text="${request.description}"/>
+	</div>
+
+	
+	<div class="container text-center">
+	<a th:href="@{'/triageconfirm/'+ ${request.getId()}}" class="btn btn-info" role="button">Assign to someone</a>
+	<a th:href="@{/triage}" class="btn btn-info" role="button">Back to triage page</a> 
+	</div>
+</body>
+</html>

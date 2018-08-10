@@ -32,7 +32,7 @@ public class Request {
 	}
 
 	public void setProgressStatus(int progressStatus) {
-		this.progressStatus = 0;
+		this.progressStatus = progressStatus;
 	}
 
 	public int getId() {
