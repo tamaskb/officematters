@@ -12,17 +12,21 @@ import com.epam.officematters.service.exception.RequestAlreadyExistsException;
 
 @Validated
 public interface RequestService {
-	
+
 	void register(@NotNull @Valid Request request) throws RequestAlreadyExistsException;
-		
-	Request getRequestById (int id);
-	
+
+	Request getRequestById(int id);
+
 	List<Request> getNewRequests();
-	
+
 	List<Request> getInprogressRequests();
-	
+
 	List<Request> getResolvedRequests();
-	
+
+	List<Request> getNotTriagedRequests();
+
 	void changeRequestToInProgress(Request request, int id);
-		
+
+	void changeRequestPriority(Request request, int id);
+
 }

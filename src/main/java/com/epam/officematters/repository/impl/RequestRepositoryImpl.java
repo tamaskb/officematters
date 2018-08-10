@@ -46,7 +46,7 @@ public class RequestRepositoryImpl implements RequestRepository {
 
 		logger.info("saving now: " + request);
 
-		final String sql = "INSERT INTO requests (name, email, subject, description, progress) VALUES ( ?, ?, ?, ?, 0)";
+		final String sql = "INSERT INTO requests (name, email, subject, description, progress, priority) VALUES ( ?, ?, ?, ?, 0, 0)";
 		jdbcTemplate.update(sql, request.getFullName(), request.getEmailAddress(), request.getSubject(),
 				request.getDescription());
 	}
@@ -97,6 +97,19 @@ public class RequestRepositoryImpl implements RequestRepository {
 	public void pushRequestToInProgress(Request request, int id) {
 		final String sql = "UPDATE requests SET progress = 1 WHERE id = " + id;
 		jdbcTemplate.update(sql);
+	}
+
+	@Override
+	public List<Request> listNotTriagedRequests() {
+		final String sql = "SELECT * FROM requests WHERE priority = 0";
+		return jdbcTemplate.query(sql, mapper);
+	}
+
+	@Override
+	public void setRequestPriority(Request request, int id) {
+		final String sql = "UPDATE requests SET priority = ? WHERE id =" + id;
+		jdbcTemplate.update(sql, request.getPriority());
+
 	}
 
 }

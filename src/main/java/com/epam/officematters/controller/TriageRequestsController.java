@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.epam.officematters.model.Request;
 import com.epam.officematters.service.RequestService;
@@ -17,6 +18,8 @@ import com.epam.officematters.service.RequestService;
 @Controller
 public class TriageRequestsController {
 	
+	private static final String PATH_TRIAGECONFIRMATION = "triageconfirmation";
+
 	@Autowired
 	private RequestService service;
 	
@@ -34,7 +37,13 @@ public class TriageRequestsController {
 	@GetMapping("/triageconfirm/{id}")
 	public String triageconfirm(@ModelAttribute Request request, @PathVariable(value = "id") int id) {
 		service.changeRequestToInProgress(request, id);
-		return "triageconfirmation";
+		return PATH_TRIAGECONFIRMATION;
+	}
+	
+	@PostMapping("/triageconfirm/{id}")
+	public String submitPriority(@PathVariable(value = "id") int id, @ModelAttribute Request request) {
+		service.changeRequestPriority(request, id);
+		return PATH_TRIAGECONFIRMATION;
 	}
 
 }

@@ -31,7 +31,8 @@
 					<tbody>
 						<tr th:each="requestNew: ${requestNew}">
 							<td><p th:text="${requestNew.subject}" />
-								<p th:text="${requestNew.fullName}" /></td>
+								<p th:text="${requestNew.fullName}" />
+								<p th:text="${requestNew.getPriority()}" /></td>
 							<td><a th:href="@{'/comment/'+ ${requestNew.getId()}}"
 								class="btn tbn-info" role="button">Check details</a></td>
 						</tr>
@@ -50,7 +51,8 @@
 					<tbody>
 						<tr th:each="requestInProgress: ${requestInProgress} ">
 							<td><p th:text="${requestInProgress.subject}" />
-								<p th:text="${requestInProgress.fullName}" /></td>
+								<p th:text="${requestInProgress.fullName}" />
+								<p th:text="${requestInProgress.getPriority()}" /></td>
 							<td><a
 								th:href="@{'/comment/'+ ${requestInProgress.getId()}}"
 								class="btn tbn-info" role="button">Check details</a></td>

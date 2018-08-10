@@ -17,17 +17,36 @@
 	</div>
 
 	<div class="container text-center">
-	
-	<p th:text="${request.fullName}"/>
-	<p th:text="${request.emailAddress}"/>
-	<p th:text="${request.subject}"/>
-	<p th:text="${request.description}"/>
+
+		<p th:text="${request.fullName}" />
+		<p th:text="${request.emailAddress}" />
+		<p th:text="${request.subject}" />
+		<p th:text="${request.description}" />
 	</div>
 
-	
 	<div class="container text-center">
-	<a th:href="@{'/triageconfirm/'+ ${request.getId()}}" class="btn btn-info" role="button">Assign to someone</a>
-	<a th:href="@{/triage}" class="btn btn-info" role="button">Back to triage page</a> 
+		
+			<p>Define the priority for this request:</p>
+			<div class="col-lg-6 text-right">
+				<p>Priority:</p>
+			</div>
+			<div class="col-lg-2 text-left">
+				<form th:action="@{'/triageconfirm/'+ ${request.getId()}}" th:object="${request}" method="post">
+					<input type="radio" name="priority" value="1">Critical<br>
+					<input type="radio" name="priority" value="2"> Major<br>
+					<input type="radio" name="priority" value="3"> Low<br>
+					<input type="submit" value="Set priority">
+				</form>
+			</div>
+		</div>
+	<br>
+
+
+	<div class="container text-center">
+		<a th:href="@{'/triageconfirm/'+ ${request.getId()}}"
+			class="btn btn-info" role="button">Assign to someone</a> <a
+			th:href="@{/triage}" class="btn btn-info" role="button">Back to
+			triage page</a>
 	</div>
 </body>
 </html>

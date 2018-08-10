@@ -15,7 +15,7 @@ public class TriageController {
 	
 	@GetMapping("/triage")
 	public String triage(Model model) {
-		model.addAttribute("request", service.getNewRequests());
+		model.addAttribute("request", service.getNotTriagedRequests());
 				
 		return "triage";
 	}

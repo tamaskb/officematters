@@ -22,6 +22,10 @@ public interface RequestRepository {
 	
 	List<Request> listResolvedRequests();
 	
+	List<Request> listNotTriagedRequests();
+	
 	void pushRequestToInProgress(Request request, int id);
+	
+	void setRequestPriority(Request request, int id);
 	
 }

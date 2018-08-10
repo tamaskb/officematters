@@ -4,5 +4,6 @@ CREATE TABLE IF NOT EXISTS requests (
     email VARCHAR(64) NOT NULL,
     subject VARCHAR(36),
     description VARCHAR(255),
-    progress INT
+    progress INT,
+    priority INT
     );
