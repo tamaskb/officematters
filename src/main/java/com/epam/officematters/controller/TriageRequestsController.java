@@ -18,6 +18,8 @@ import com.epam.officematters.service.RequestService;
 @Controller
 public class TriageRequestsController {
 	
+	private static final String PATH_TRIAGECONFIRM_ID = "/triageconfirm/{id}";
+
 	private static final String PATH_TRIAGECONFIRMATION = "triageconfirmation";
 
 	@Autowired
@@ -34,13 +36,13 @@ public class TriageRequestsController {
 		return "triagerequest";
 	}
 	
-	@GetMapping("/triageconfirm/{id}")
+	@GetMapping(PATH_TRIAGECONFIRM_ID)
 	public String triageconfirm(@ModelAttribute Request request, @PathVariable(value = "id") int id) {
 		service.changeRequestToInProgress(request, id);
 		return PATH_TRIAGECONFIRMATION;
 	}
 	
-	@PostMapping("/triageconfirm/{id}")
+	@PostMapping(PATH_TRIAGECONFIRM_ID)
 	public String submitPriority(@PathVariable(value = "id") int id, @ModelAttribute Request request) {
 		service.changeRequestPriority(request, id);
 		return PATH_TRIAGECONFIRMATION;

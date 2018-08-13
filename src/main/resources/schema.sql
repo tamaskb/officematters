@@ -7,3 +7,9 @@ CREATE TABLE IF NOT EXISTS requests (
     progress INT,
     priority INT
     );
+    
+CREATE TABLE IF NOT EXISTS comments (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+	comment VARCHAR(255),
+	requestid INT
+	);

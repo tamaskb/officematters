@@ -1,8 +1,8 @@
 package com.epam.officematters.model;
 
-import java.util.HashMap;
-import java.util.List;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -25,27 +25,16 @@ public class Request {
 	@Size(min = 5, message = "Description must be at least 5 characters!")
 	private String description;
 
-	private int priority; // 0=not yet added, 1=high, 2=medium, 3=high
+	private int priority; // 0=not yet added, 1=high, 2=medium, 3=low
 
+	@Id
+	@GeneratedValue
 	private int id;
 
 	private int progressStatus; // 0=new, 1=in progress, 2=resolved
+	
+	private String comment;
 
-	public int getProgressStatus() {
-		return progressStatus;
-	}
-
-	public void setProgressStatus(int progressStatus) {
-		this.progressStatus = progressStatus;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public Request() {
 
@@ -57,6 +46,7 @@ public class Request {
 		this.emailAddress = emailAddress;
 		this.subject = subject;
 		this.description = description;
+
 	}
 
 	public String getFullName() {
@@ -90,13 +80,37 @@ public class Request {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	public int getPriority() {
 		return priority;
 	}
 
 	public void setPriority(int priority) {
 		this.priority = priority;
+	}
+
+	public int getProgressStatus() {
+		return progressStatus;
+	}
+
+	public void setProgressStatus(int progressStatus) {
+		this.progressStatus = progressStatus;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
 	@Override

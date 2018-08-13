@@ -28,4 +28,8 @@ public interface RequestRepository {
 	
 	void setRequestPriority(Request request, int id);
 	
+	void getComment(Request request, int id);
+	
+	List<String> listRequestComments(int id);
+	
 }

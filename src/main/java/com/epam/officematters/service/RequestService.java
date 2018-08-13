@@ -28,5 +28,9 @@ public interface RequestService {
 	void changeRequestToInProgress(Request request, int id);
 
 	void changeRequestPriority(Request request, int id);
+	
+	void addComment (Request request, int id);
+	
+	List<String> getRequestComments(int id);
 
 }

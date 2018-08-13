@@ -74,4 +74,17 @@ public class RequestServiceImpl implements RequestService {
 		repository.setRequestPriority(request, id);
 	}
 
+	@Override
+	@Transactional
+	public void addComment(Request request, int id) {
+		repository.getComment(request, id);
+	}
+
+	@Override
+	public List<String> getRequestComments(int id) {
+		return repository.listRequestComments(id);
+	}
+	
+	
+
 }

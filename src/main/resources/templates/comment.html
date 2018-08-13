@@ -17,18 +17,24 @@
 	</div>
 
 	<div class="container text-center">
-	
-	<p th:text="${request.fullName}"/>
-	<p th:text="${request.emailAddress}"/>
-	<p th:text="${request.subject}"/>
-	<p th:text="${request.description}"/>
+
+		<p th:text="${request.fullName}" />
+		<p th:text="${request.emailAddress}" />
+		<p th:text="${request.subject}" />
+		<p th:text="${request.description}" />
 	</div>
+
 	<div class="container text-center">
-	<textarea rows="5" cols="75" placeholder="Enter your comment here." ></textarea> 
+		<form th:action="@{'/comment/'+ ${request.getId()}}"
+			th:object="${commentForm}" method="post">
+			<input type="text" size="50" th:field="*{comment}"><br>
+			<input type="submit" value="Add comment">
+		</form>
 	</div>
-	
+
 	<div class="container text-center">
-	<a th:href="@{/}" class="btn btn-info" role="button">Back to the home page</a> 
+		<a th:href="@{/}" class="btn btn-info" role="button">Back to the
+			home page</a>
 	</div>
 </body>
 </html>
