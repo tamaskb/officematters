@@ -26,8 +26,9 @@
 
 	<div class="container text-center">
 		<form th:action="@{'/comment/'+ ${request.getId()}}"
-			th:object="${commentForm}" method="post">
-			<input type="text" size="50" th:field="*{comment}"><br>
+			th:object="${commentForm}" method="post" >
+			Your name: <input type="text" th:field="*{author}"><br>
+			Your comment: <input type="text" size="50" th:field="*{commentMsg}"><br>
 			<input type="submit" value="Add comment">
 		</form>
 	</div>

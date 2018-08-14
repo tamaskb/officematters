@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.epam.officematters.model.Comment;
 import com.epam.officematters.model.Request;
+import com.epam.officematters.service.CommentService;
 import com.epam.officematters.service.RequestService;
 
 
@@ -15,6 +17,8 @@ import com.epam.officematters.service.RequestService;
 @Controller
 public class CommentController {
 	
+	private static final String COMMENT_FORM = "comment";
+
 	private static final String COMMENT_FORM_ATTRIBUTE = "commentForm";
 
 	private static final String PATH_COMMENT_ID = "/comment/{id}";
@@ -22,22 +26,24 @@ public class CommentController {
 	@Autowired
 	private RequestService service;
 	
+	@Autowired
+	private CommentService commentService;
+	
 	
 	@GetMapping(PATH_COMMENT_ID)
-	public String comment(@PathVariable(value = "id") int id, @ModelAttribute(COMMENT_FORM_ATTRIBUTE) Request r, Model model) {
+	public String getCommentForm(@PathVariable(value = "id") int id,@ModelAttribute(COMMENT_FORM_ATTRIBUTE) Comment c, Model model) {
 		
 		model.addAttribute("request", service.getRequestById(id));
 				
-		return "comment";
+		return COMMENT_FORM;
 	}
 	
 	@PostMapping(PATH_COMMENT_ID)
-	public String sendComment(@PathVariable(value = "id") int id, @ModelAttribute(COMMENT_FORM_ATTRIBUTE) Request request, Model model) {
+	public String sendComment(@PathVariable(value = "id") int id, @ModelAttribute(COMMENT_FORM_ATTRIBUTE) Comment comment, Model model) {
 		model.addAttribute("request", service.getRequestById(id));
-		service.getRequestComments(id);
-		service.addComment(request, id);
+		commentService.registerComment(comment, id);
 		
-		return "comment";
+		return COMMENT_FORM;
 	}
 
 }

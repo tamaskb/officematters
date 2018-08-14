@@ -10,6 +10,8 @@ CREATE TABLE IF NOT EXISTS requests (
     
 CREATE TABLE IF NOT EXISTS comments (
     id INT PRIMARY KEY AUTO_INCREMENT,
+    author VARCHAR(64),
 	comment VARCHAR(255),
+	date DATETIME,
 	requestid INT
 	);

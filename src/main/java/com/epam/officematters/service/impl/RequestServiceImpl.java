@@ -80,11 +80,4 @@ public class RequestServiceImpl implements RequestService {
 		repository.getComment(request, id);
 	}
 
-	@Override
-	public List<String> getRequestComments(int id) {
-		return repository.listRequestComments(id);
-	}
-	
-	
-
 }

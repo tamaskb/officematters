@@ -30,7 +30,5 @@ public interface RequestService {
 	void changeRequestPriority(Request request, int id);
 	
 	void addComment (Request request, int id);
-	
-	List<String> getRequestComments(int id);
 
 }
