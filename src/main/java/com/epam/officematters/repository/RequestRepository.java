@@ -30,6 +30,4 @@ public interface RequestRepository {
 	
 	void getComment(Request request, int id);
 	
-	List<String> listRequestComments(int id);
-	
 }

@@ -2,10 +2,16 @@ package com.epam.officematters.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotBlank;
+
 public class Comment {
 	
+	@NotBlank(message = "Please enter your comment")
 	private String commentMsg;
+	
+	@NotBlank(message = "Please enter your name")
 	private String author;
+	
 	private Date currentTime;
 	
 	public Comment () {
@@ -38,5 +44,12 @@ public class Comment {
 	public void setCurrentTime(Date currentTime) {
 		this.currentTime = currentTime;
 	}
+
+	@Override
+	public String toString() {
+		return "Comment [commentMsg=" + commentMsg + ", author=" + author + ", currentTime=" + currentTime + "]";
+	}
+	
+	
 
 }

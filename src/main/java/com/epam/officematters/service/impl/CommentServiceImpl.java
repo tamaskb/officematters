@@ -1,5 +1,7 @@
 package com.epam.officematters.service.impl;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,11 @@ public class CommentServiceImpl implements CommentService {
 		logger.info("saving comment: " + comment);
 		commentRepo.saveComment(comment, requestId);
 		
+	}
+
+	@Override
+	public List<Comment> getRequestComments(int requestId) {
+		return commentRepo.listRequestComments(requestId);
 	}
 
 }

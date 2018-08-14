@@ -104,10 +104,5 @@ public class RequestRepositoryImpl implements RequestRepository {
 	}
 
 	
-	@Override
-	public List<String> listRequestComments(int id) {
-		final String sql = "SELECT comment FROM comments WHERE requestid =" + id;
-		return jdbcTemplate.queryForList(sql, String.class);
-	}
 
 }
