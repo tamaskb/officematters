@@ -4,7 +4,7 @@ title {
 
 body {
 	font-family: "Source Sans Pro";
-	background-color: #CEDB56;
+	background-color: #008ACE;
 
 }
 
@@ -16,30 +16,11 @@ body {
 	color: #ffffff;
 }
 
-.container.requests{
-	background-color: #CEDB56;
-}
-
-label {
-	color: #000000;
-}
-
-input {
-	color: black;
-}
-
-textarea {
-	background-color: #000000;
+input[type="submit"] {
+	background-color: #76cdd8;
 }
 
 .validation-error {
 	color: red;
 }
 
-.table-hover tbody {
-	background-color: #76cdd8;
-}
-
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  background-color: #008ACE;
-}
