@@ -11,7 +11,7 @@
 
 	<div class="jumbotron">
 		<div class="container text-center">
-			<h1>Update request</h1>
+			<h1><span id="epamtitle">&lt</span>Update request<span id="epamtitle">></span></h1>
 			<p>You can start progress on a request here</p>
 		</div>
 	</div>
@@ -23,12 +23,41 @@
 		<p th:text="${request.subject}" />
 		<p th:text="${request.description}" />
 	</div>
+		<div class="container text-center">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th class="text-center" colspan="2"><h3>Comments</h3></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="comment: ${comment}">
+					<td><p th:text="${comment.author}" />
+						<p th:text="${comment.commentMsg}" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+		<div class="container text-center">
+		<form th:action="@{'/comment/'+ ${request.getId()}}"
+			th:object="${commentForm}" method="post">
+			<p>Your name: <input type="text" th:field="*{author}"></p>
+			<p th:if="${#fields.hasErrors('author')}" th:errors="*{author}"
+				class="validation-error">Name error</p>
+			<p>Your comment: <input type="text" size="50" th:field="*{commentMsg}"></p>
+			<p th:if="${#fields.hasErrors('commentMsg')}" th:errors="*{commentMsg}"
+				class="validation-error">Comment error</p>
+			<p><input type="submit" value="Add comment"></p>
+		</form>
+	</div>
 
 	
 
 	<div class="container text-center">
-		<a th:href="@{/maintenance}" class="btn btn-info" role="button">Back to the maintenance page</a>
 			<a th:href="@{'/maintenance/requests/startprogress/'+ ${request.getId()}}" class="btn btn-info" role="button">Start Progress</a>
+			<p class="text-left"><a th:href="@{/maintenance}" class="btn btn-info" role="button">Back to the maintenance page</a></p>
 	</div>
+	
 </body>
 </html>

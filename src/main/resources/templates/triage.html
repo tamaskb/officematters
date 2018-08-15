@@ -11,37 +11,38 @@
 
 	<div class="jumbotron">
 		<div class="container text-center">
-			<h1>Triage requests page</h1>
-			<p>Triage these</p>
+			<h1><span id="epamtitle">&lt</span>Triage requests page<span id="epamtitle">></span></h1>
 		</div>
 	</div>
 	<div class="container text-center">
+	<div class="col-lg-3"></div>
+	<div class="col-lg-6 text-center">
 		<table class="table">
-			<thead>
-				<tr>
-					<th class="text-center" colspan="2"><h3>Requests waiting
-							for triage</h3></th>
-				</tr>
-			</thead>
+
 			<tbody>
 				<tr th:each="request: ${request}">
-					<td><p th:text="${request.fullName}" />
+					<td>
+					
+						<p th:text="${request.fullName}" />
 						<p th:text="${request.subject}" />
 						<p th:text="${request.emailAddress}" />
 						<p th:text="${request.description}" />
 					
 						<form th:action="@{'/triageconfirm/'+ ${request.getId()}}"
 							th:object="${request}" method="post">
-							<input type="radio" name="priority" value=1>Critical<br>
-							<input type="radio" name="priority" value="2"> Major<br>
-							<input type="radio" name="priority" value="3"> Low<br>
-							<input type="submit" value="Set priority">
+							<p class="text-left">Define the priority of this request:</p>
+							<p class="text-left"><input type="radio" name="priority" value=1>Critical / high priority<br>
+							<input type="radio" name="priority" value="2"> Major / medium priority<br>
+							<input type="radio" name="priority" value="3"> Low / minor priority<br></p>
+							<p class="text-left"><input type="submit" value="Save"></p>
 						</form>
 					</td>
 				</tr>
-				<tr><td><a th:href="@{/maintenance}" class="btn btn-info" role="button">Back to maintenance page</a></td></tr>
+				<tr><td class="text-left"><a th:href="@{/maintenance}" class="btn btn-info" role="button">Back to maintenance page</a></td></tr>
 			</tbody>
 		</table>
+		</div>
+		<div class="col-lg-3"></div>
 	</div>
 </body>
 </html>

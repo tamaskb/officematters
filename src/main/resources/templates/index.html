@@ -11,7 +11,7 @@
 
 	<div class="jumbotron">
 		<div class="container text-center">
-			<h1>Welcome to the Office Matters home page!</h1>
+			<h1><span id="epamtitle">&lt</span>Welcome to the Office Matters home page!<span id="epamtitle">></span></h1>
 			<p>Please select below what you want to do</p>
 		</div>
 	</div>
@@ -33,7 +33,7 @@
 							<td><p th:text="${requestNew.subject}" />
 								<p th:text="${requestNew.fullName}" />
 								<p th:text="${requestNew.getPriority()}" /></td>
-							<td><a th:href="@{'/comment/'+ ${requestNew.getId()}}"
+							<td><a th:href="@{'/requestdetails/'+ ${requestNew.getId()}}"
 								class="btn tbn-info" role="button">Check details</a></td>
 						</tr>
 					</tbody>
@@ -54,7 +54,7 @@
 								<p th:text="${requestInProgress.fullName}" />
 								<p th:text="${requestInProgress.getPriority()}" /></td>
 							<td><a
-								th:href="@{'/comment/'+ ${requestInProgress.getId()}}"
+								th:href="@{'/requestdetails/'+ ${requestInProgress.getId()}}"
 								class="btn tbn-info" role="button">Check details</a></td>
 						</tr>
 
@@ -73,7 +73,7 @@
 						<tr th:each="requestResolved: ${requestResolved}">
 							<td><p th:text="${requestResolved.subject}" />
 								<p th:text="${requestResolved.fullName}" /></td>
-							<td><a th:href="@{'/comment/'+ ${requestResolved.getId()}}"
+							<td><a th:href="@{'/requestdetails/'+ ${requestResolved.getId()}}"
 								class="btn tbn-info" role="button">Check details</a></td>
 						</tr>
 					</tbody>
