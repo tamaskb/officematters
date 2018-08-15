@@ -34,7 +34,8 @@ public class RequestRepositoryImpl implements RequestRepository {
 			r.setEmailAddress(rs.getString("email"));
 			r.setSubject(rs.getString("subject"));
 			r.setDescription(rs.getString("description"));
-
+			r.setProgressStatus(rs.getInt("progress"));
+			r.setPriority(rs.getInt("priority"));
 			return r;
 		}
 	};
@@ -46,6 +47,8 @@ public class RequestRepositoryImpl implements RequestRepository {
 		logger.info("saving now: " + request);
 
 		final String sql = "INSERT INTO requests (name, email, subject, description, progress, priority) VALUES ( ?, ?, ?, ?, 0, 0)";
+		request.setProgressStatus(0);
+		request.setPriority(0);
 		jdbcTemplate.update(sql, request.getFullName(), request.getEmailAddress(), request.getSubject(),
 				request.getDescription());
 	}
@@ -62,7 +65,7 @@ public class RequestRepositoryImpl implements RequestRepository {
 
 	@Override
 	public List<Request> listNewRequests() {
-		final String sql = "SELECT * FROM requests WHERE progress = 0";
+		final String sql = "SELECT * FROM requests WHERE progress = 0 ORDER BY priority ASC";
 		return jdbcTemplate.query(sql, requestMapper);
 	}
 
@@ -81,12 +84,14 @@ public class RequestRepositoryImpl implements RequestRepository {
 	@Override
 	public void pushRequestToInProgress(Request request, int id) {
 		final String sql = "UPDATE requests SET progress = 1 WHERE id = " + id;
+		request.setProgressStatus(1);
 		jdbcTemplate.update(sql);
 	}
 	
 	@Override
 	public void pushRequestToResolved(Request request, int id) {
 		final String sql = "UPDATE requests SET progress = 2 WHERE id = " + id;
+		request.setProgressStatus(2);
 		jdbcTemplate.update(sql);
 	}
 

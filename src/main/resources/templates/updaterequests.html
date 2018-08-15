@@ -23,7 +23,9 @@
 		<p th:text="${request.subject}" />
 		<p th:text="${request.description}" />
 	</div>
-		<div class="container text-center">
+		<div class="container">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6">
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -37,21 +39,29 @@
 				</tr>
 			</tbody>
 		</table>
+	</div><div class="col-lg-3"></div>
 	</div>
-	
-		<div class="container text-center">
+		
+		<div class="container">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6">
 		<form th:action="@{'/comment/'+ ${request.getId()}}"
 			th:object="${commentForm}" method="post">
-			<p>Your name: <input type="text" th:field="*{author}"></p>
+			
+			<p class="text-left">Your name:</p> 
+			<p class="text-left"><input type="text" th:field="*{author}"></p>
 			<p th:if="${#fields.hasErrors('author')}" th:errors="*{author}"
 				class="validation-error">Name error</p>
-			<p>Your comment: <input type="text" size="50" th:field="*{commentMsg}"></p>
+				
+			<p class="text-left">Your comment: </p>
+			<p><input type="text"  th:field="*{commentMsg}" id="commentBox"></p>
 			<p th:if="${#fields.hasErrors('commentMsg')}" th:errors="*{commentMsg}"
 				class="validation-error">Comment error</p>
+				
 			<p><input type="submit" value="Add comment"></p>
 		</form>
+	</div><div class="col-lg-3"></div>
 	</div>
-
 	
 
 	<div class="container text-center">

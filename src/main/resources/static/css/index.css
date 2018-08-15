@@ -28,10 +28,6 @@ input {
 	color: black;
 }
 
-textarea {
-	background-color: #000000;
-}
-
 .validation-error {
 	color: red;
 }

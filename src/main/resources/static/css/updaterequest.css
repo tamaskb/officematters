@@ -20,10 +20,19 @@ body {
 	color: #39C2D7;
 }
 
+input {
+	color: #000000;
+}
+
 input[type="submit"] {
 	background-color: #76cdd8;
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #263852;
+}
+
+#commentBox {
+	width:100%;
+	height: 100px;
 }
