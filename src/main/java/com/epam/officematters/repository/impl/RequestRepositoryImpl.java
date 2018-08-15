@@ -83,6 +83,12 @@ public class RequestRepositoryImpl implements RequestRepository {
 		final String sql = "UPDATE requests SET progress = 1 WHERE id = " + id;
 		jdbcTemplate.update(sql);
 	}
+	
+	@Override
+	public void pushRequestToResolved(Request request, int id) {
+		final String sql = "UPDATE requests SET progress = 2 WHERE id = " + id;
+		jdbcTemplate.update(sql);
+	}
 
 	@Override
 	public List<Request> listNotTriagedRequests() {

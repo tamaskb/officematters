@@ -61,7 +61,11 @@ public class RequestServiceImpl implements RequestService {
 	@Override
 	public void changeRequestToInProgress(Request request, int id) {
 		repository.pushRequestToInProgress(request, id);
-
+	}
+	
+	@Override
+	public void changeRequestToResolved(Request request, int id) {
+		repository.pushRequestToResolved(request, id);
 	}
 
 	@Override

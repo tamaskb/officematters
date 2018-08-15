@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{../../css/updaterequest.css}" />
+<title>Welcome to Office Matters!</title>
+</head>
+<body>
+
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>Update request</h1>
+			<p>You can start progress on a request here</p>
+		</div>
+	</div>
+
+	<div class="container text-center">
+
+		<p th:text="${request.fullName}" />
+		<p th:text="${request.emailAddress}" />
+		<p th:text="${request.subject}" />
+		<p th:text="${request.description}" />
+	</div>
+
+	
+
+	<div class="container text-center">
+		<a th:href="@{/maintenance}" class="btn btn-info" role="button">Back to the maintenance page</a>
+			<a th:href="@{'/maintenance/requests/startprogress/'+ ${request.getId()}}" class="btn btn-info" role="button">Start Progress</a>
+	</div>
+</body>
+</html>

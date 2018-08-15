@@ -4,7 +4,7 @@ title {
 
 body {
 	font-family: "Source Sans Pro";
-	background-color: #008ACE;
+	background-color: #CEDB56;
 
 }
 
@@ -17,7 +17,7 @@ body {
 }
 
 .container.requests{
-	background-color: #008ACE;
+	background-color: #CEDB56;
 }
 
 label {
@@ -41,5 +41,5 @@ textarea {
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  background-color: #263852;
+  background-color: #008ACE;
 }

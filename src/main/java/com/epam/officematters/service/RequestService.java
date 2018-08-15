@@ -26,6 +26,8 @@ public interface RequestService {
 	List<Request> getNotTriagedRequests();
 
 	void changeRequestToInProgress(Request request, int id);
+	
+	void changeRequestToResolved(Request request, int id);
 
 	void changeRequestPriority(Request request, int id);
 	

@@ -26,6 +26,8 @@ public interface RequestRepository {
 	
 	void pushRequestToInProgress(Request request, int id);
 	
+	void pushRequestToResolved(Request request, int id);
+	
 	void setRequestPriority(Request request, int id);
 	
 	void getComment(Request request, int id);
