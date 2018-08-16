@@ -36,7 +36,8 @@
 			<tbody>
 				<tr th:each="comment: ${comment}">
 					<td><p th:text="${comment.author}" />
-						<p th:text="${comment.commentMsg}" /></td>
+						<p th:text="${comment.commentMsg}" />
+						<p th:text="${comment.getCurrentTime()}"/></td>
 				</tr>
 			</tbody>
 		</table>

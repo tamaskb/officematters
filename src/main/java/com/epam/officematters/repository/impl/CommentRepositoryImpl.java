@@ -2,6 +2,8 @@ package com.epam.officematters.repository.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,7 @@ public class CommentRepositoryImpl implements CommentRepository {
 	public void saveComment(Comment comment, int requestId) {
 		
 		final String sql = "INSERT INTO comments (author, comment, date, requestid) VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
+		comment.setCurrentTime(Calendar.getInstance().getTime()); 
 		jdbcTemplate.update(sql, comment.getAuthor(), comment.getCommentMsg(),  requestId);
 	}
 

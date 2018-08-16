@@ -2,14 +2,17 @@ package com.epam.officematters.model;
 
 import java.util.Date;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class Comment {
 	
-	@NotBlank(message = "Please enter your comment")
+	@NotNull(message = "Please enter your comment")
+	@Size(min=3, message = "Please enter your comment")
 	private String commentMsg;
 	
-	@NotBlank(message = "Please enter your name")
+	@NotNull(message = "Please enter your name")
+	@Size(min=3, message = "Please enter your name")
 	private String author;
 	
 	private Date currentTime;

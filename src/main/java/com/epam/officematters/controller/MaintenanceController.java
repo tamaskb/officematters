@@ -1,8 +1,10 @@
 package com.epam.officematters.controller;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,10 +17,13 @@ import com.epam.officematters.model.Comment;
 import com.epam.officematters.model.Request;
 import com.epam.officematters.service.CommentService;
 import com.epam.officematters.service.RequestService;
+import com.epam.officematters.service.exception.CommentException;
 
 @Controller
 public class MaintenanceController {
 	
+	private static final String COMMENT_FORM_ATTRIBUTE = "commentForm";
+
 	@Autowired
 	private RequestService service;
 	
@@ -40,7 +45,7 @@ public class MaintenanceController {
 	}
 	
 	@GetMapping("/maintenance/requests/{id}")
-	public String updateRequests(@PathVariable(value = "id") int id, Model model, Model commentModel, @ModelAttribute ("commentForm") Comment c) {
+	public String updateRequests(@PathVariable(value = "id") int id, Model model, Model commentModel, @ModelAttribute (COMMENT_FORM_ATTRIBUTE) Comment c) {
 		model.addAttribute("request", service.getRequestById(id));
 		commentModel.addAttribute("comment", commentService.getRequestComments(id));
 		return "updaterequests";
@@ -48,13 +53,13 @@ public class MaintenanceController {
 	
 	@PostMapping("/comment/{id}")
 	public String sendComment(@PathVariable(value = "id") int id,
-			@Valid @ModelAttribute("commentForm") Comment comment, Model model, Model commentModel,
-			BindingResult result) {
-		model.addAttribute("request", service.getRequestById(id));
+			@Valid @ModelAttribute(COMMENT_FORM_ATTRIBUTE) Comment comment, BindingResult result, HttpServletResponse response, Model requestModel, Model commentModel) throws CommentException {
+		requestModel.addAttribute("request", service.getRequestById(id));
 		commentModel.addAttribute("comment", commentService.getRequestComments(id));
 		if (result.hasErrors()) {
+			response.setStatus(HttpStatus.BAD_REQUEST.value());
 			result.reject("commentForm.error.incompleteInput");
-			return "/maintenance/requests/{id}";
+			return "updaterequests";
 		} else {
 			commentService.registerComment(comment, id);
 			return "redirect:/maintenance";
