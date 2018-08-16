@@ -37,10 +37,9 @@ public class RequestController {
 			response.setStatus(HttpStatus.BAD_REQUEST.value());
 			result.reject("requestForm.error.incompleteInput");
 			return REQUEST_FORM;
-		} else {
-			requestService.register(request);
-			return "redirect:/confirmation";
 		}
+		requestService.register(request);
+		return "redirect:/confirmation";
 	}
 
 }

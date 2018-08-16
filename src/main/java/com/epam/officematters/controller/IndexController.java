@@ -20,10 +20,10 @@ public class IndexController {
 	private CommentService commentService;
 
 	@RequestMapping("/")
-	public String home(Model modelNew, Model modelInProgress, Model modelResolved) {
-		modelNew.addAttribute("requestNew", requestService.getNewRequests());
-		modelInProgress.addAttribute("requestInProgress", requestService.getInprogressRequests());
-		modelResolved.addAttribute("requestResolved", requestService.getResolvedRequests());
+	public String home(Model model) {
+		model.addAttribute("requestNew", requestService.getNewRequests());
+		model.addAttribute("requestInProgress", requestService.getInprogressRequests());
+		model.addAttribute("requestResolved", requestService.getResolvedRequests());
 
 		return "index";
 	}
