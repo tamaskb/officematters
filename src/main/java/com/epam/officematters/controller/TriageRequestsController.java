@@ -18,7 +18,6 @@ import com.epam.officematters.service.RequestService;
 @Controller
 public class TriageRequestsController {
 	
-	private static final String PATH_TRIAGECONFIRM_ID = "/triageconfirm/{id}";
 
 	@Autowired
 	private RequestService service;
@@ -33,8 +32,14 @@ public class TriageRequestsController {
 				
 		return "triagerequest";
 	}
+	
+	@GetMapping("/maintenance/triage")
+	public String triage(Model model) {
+		model.addAttribute("request", service.getNotTriagedRequests());
+		return "triage";
+	}
 		
-	@PostMapping(PATH_TRIAGECONFIRM_ID)
+	@PostMapping("/triageconfirm/{id}")
 	public String submitPriority(@PathVariable(value = "id") int id, @ModelAttribute Request request) {
 		service.changeRequestPriority(request, id);
 		return "redirect:/maintenance/triage";

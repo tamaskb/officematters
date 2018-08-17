@@ -43,12 +43,6 @@ public class MaintenanceController {
 		return "maintenance";
 	}
 
-	@GetMapping("/maintenance/triage")
-	public String triage(Model model) {
-		model.addAttribute("request", service.getNotTriagedRequests());
-		return "triage";
-	}
-
 	@GetMapping("/maintenance/requests/{id}")
 	public String updateRequests(@PathVariable(value = "id") int id, Model model,
 			@ModelAttribute(COMMENT_FORM_ATTRIBUTE) Comment c) {
