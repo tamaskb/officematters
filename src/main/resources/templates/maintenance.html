@@ -15,8 +15,9 @@
 			<p>You can see the already submitted requests and triage them.</p>
 		</div>
 	</div>
-	<div class="container text-right">
-		<a th:href="@{/maintenance/triage}" class="btn btn-info" role="button">Triage new requests!</a>
+	<div class="container text-right" >
+		<p th:if="${#lists.isEmpty(notTriagedRequests)}" class="btn btn-info" role="button">Triage new requests!<span th:text="' (' + ${#lists.size(notTriagedRequests)} + ')'"></span></p>
+		<p th:if="${not #lists.isEmpty(notTriagedRequests)}"><a th:href="@{/maintenance/triage}" class="btn btn-info" role="button" >Triage new requests!<span th:text="' (' + ${#lists.size(notTriagedRequests)} + ')'"></span></a>
 	</div>
 	<div class="container requests">
 		<div class="row">

@@ -39,6 +39,7 @@ public class MaintenanceController {
 		model.addAttribute("requestNew", service.getNewRequests());
 		model.addAttribute("requestInProgress", service.getInprogressRequests());
 		model.addAttribute("requestResolved", service.getResolvedRequests());
+		model.addAttribute("notTriagedRequests", service.getNotTriagedRequests());
 		return "maintenance";
 	}
 
