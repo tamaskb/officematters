@@ -20,14 +20,6 @@ body {
 	background-color: #008ACE;
 }
 
-label {
-	color: #000000;
-}
-
-input {
-	color: black;
-}
-
 .validation-error {
 	color: red;
 }
@@ -42,4 +34,14 @@ input {
 
 #epamtitle {
 	color: #39C2D7;
+}
+
+a {
+	text-decoration: none;
+	color: #ffffff;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #ffffff;
 }

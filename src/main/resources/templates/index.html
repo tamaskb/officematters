@@ -29,12 +29,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="requestNew: ${requestNew}">
-							<td><p th:text="${requestNew.subject}" />
-								<p th:text="${requestNew.fullName}" />
-								<p th:text="'P' + ${requestNew.getPriority()}" /></td>
-							<td><a th:href="@{'/requestdetails/'+ ${requestNew.getId()}}"
-								class="btn tbn-info" role="button">Check details</a></td>
+						<tr th:each="requestNew: ${requestNew}">	
+							<td class="text-center">
+								<a th:href="@{'/requestdetails/'+ ${requestNew.getId()}}"
+									 role="button">
+									<span th:text="${requestNew.subject}" ></span><br>
+									<span th:text="'by ' + ${requestNew.fullName}" ></span><br>
+									<span th:text="'P' + ${requestNew.getPriority()}" ></span>
+								</a>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -50,12 +53,14 @@
 					</thead>
 					<tbody>
 						<tr th:each="requestInProgress: ${requestInProgress} ">
-							<td><p th:text="${requestInProgress.subject}" />
-								<p th:text="${requestInProgress.fullName}" />
-								<p th:text="'P' + ${requestInProgress.getPriority()}" /></td>
-							<td><a
-								th:href="@{'/requestdetails/'+ ${requestInProgress.getId()}}"
-								class="btn tbn-info" role="button">Check details</a></td>
+							<td class="text-center">
+								<a th:href="@{'/requestdetails/'+ ${requestInProgress.getId()}}"
+									 role="button">
+									<span th:text="${requestInProgress.subject}" ></span><br>
+									<span th:text="'by ' + ${requestInProgress.fullName}" ></span><br>
+									<span th:text="'P' + ${requestInProgress.getPriority()}" ></span>
+								</a>
+							</td>							
 						</tr>
 
 					</tbody>
@@ -71,10 +76,13 @@
 					</thead>
 					<tbody>
 						<tr th:each="requestResolved: ${requestResolved}">
-							<td><p th:text="${requestResolved.subject}" />
-								<p th:text="${requestResolved.fullName}" /></td>
-							<td><a th:href="@{'/requestdetails/'+ ${requestResolved.getId()}}"
-								class="btn tbn-info" role="button">Check details</a></td>
+							<td class="text-center">
+								<a th:href="@{'/requestdetails/'+ ${requestResolved.getId()}}"
+									 role="button">
+									<span th:text="${requestResolved.subject}" ></span><br>
+									<span th:text="'by ' + ${requestResolved.fullName}" ></span><br>
+								</a>
+							</td>	
 						</tr>
 					</tbody>
 				</table>
