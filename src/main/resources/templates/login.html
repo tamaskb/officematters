@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{../css/login.css}" />
+<title>Login page</title>
+
+</head>
+<body>
+
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>
+				<span id="epamtitle">&lt</span>You need authorization to view this
+				page.<span id="epamtitle">></span>
+			</h1>
+			<p>Please enter your username and password.</p>
+		</div>
+	</div>
+
+
+	<div class="container text-center">
+		<p th:if="${param.logout}">You have been logged out.</p>
+		<form th:action="@{/login}" method="post">
+			<div>
+				<p id="errorLogin" th:if="${param.error}">Invalid username and/or password.</p>
+				<label> User Name : <input type="text" name="username" />
+				</label>
+			</div>
+			<div>
+				<label> Password: <input type="password" name="password" />
+				</label>
+			</div>
+			<button class="btn btn-info" type="submit">Sign in</button>
+
+		</form>
+	</div>
+</body>
+</html>

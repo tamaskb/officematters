@@ -11,13 +11,23 @@
 
 	<div class="jumbotron">
 		<div class="container text-center">
-			<h1><span id="epamtitle">&lt</span>Welcome to the Maintenance Team home page!<span id="epamtitle">></span></h1>
+			<h1>
+				<span id="epamtitle">&lt</span>Welcome to the Maintenance Team home
+				page!<span id="epamtitle">></span>
+			</h1>
 			<p>You can see the already submitted requests and triage them.</p>
 		</div>
 	</div>
-	<div class="container text-right" >
-		<p th:if="${#lists.isEmpty(notTriagedRequests)}" class="btn btn-info" role="button">Triage new requests!<span th:text="' (' + ${#lists.size(notTriagedRequests)} + ')'"></span></p>
-		<p th:if="${not #lists.isEmpty(notTriagedRequests)}"><a th:href="@{/maintenance/triage}" class="btn btn-info" role="button" >Triage new requests!<span th:text="' (' + ${#lists.size(notTriagedRequests)} + ')'"></span></a>
+	<div class="container text-right">
+		<p th:if="${#lists.isEmpty(notTriagedRequests)}" class="btn btn-info"
+			role="button">
+			Triage new requests!<span
+				th:text="' (' + ${#lists.size(notTriagedRequests)} + ')'"></span>
+		</p>
+		<p th:if="${not #lists.isEmpty(notTriagedRequests)}">
+			<a th:href="@{/maintenance/triage}" class="btn btn-info"
+				role="button">Triage new requests!<span
+				th:text="' (' + ${#lists.size(notTriagedRequests)} + ')'"></span></a>
 	</div>
 	<div class="container requests">
 		<div class="row">
@@ -30,14 +40,12 @@
 					</thead>
 					<tbody>
 						<tr th:each="requestNew: ${requestNew}">
-							<td class="text-center">
-								<a th:href="@{'/maintenance/requests/'+ ${requestNew.getId()}}"
-								 role="button">
-									<span th:text="${requestNew.subject}" ></span><br>
-									<span th:text="'by ' + ${requestNew.fullName}" ></span><br>
-									<span th:text="'P' + ${requestNew.getPriority()}" ></span>								
-								</a>
-							</td>
+							<td class="text-center"><a
+								th:href="@{'/maintenance/requests/'+ ${requestNew.getId()}}"
+								role="button"> <span th:text="${requestNew.subject}"></span><br>
+									<span th:text="'by ' + ${requestNew.fullName}"></span><br>
+									<span th:text="'P' + ${requestNew.getPriority()}"></span>
+							</a></td>
 						</tr>
 					</tbody>
 				</table>
@@ -53,14 +61,12 @@
 					</thead>
 					<tbody>
 						<tr th:each="requestInProgress: ${requestInProgress} ">
-							<td class="text-center">
-								<a th:href="@{'/maintenance/requests/'+ ${requestInProgress.getId()}}"
-								 role="button">
-									<span th:text="${requestInProgress.subject}" ></span><br>
-									<span th:text="'by ' + ${requestInProgress.fullName}" ></span><br>
-									<span th:text="'P' + ${requestInProgress.getPriority()}" ></span>								
-								</a>
-							</td>
+							<td class="text-center"><a
+								th:href="@{'/maintenance/requests/'+ ${requestInProgress.getId()}}"
+								role="button"> <span th:text="${requestInProgress.subject}"></span><br>
+									<span th:text="'by ' + ${requestInProgress.fullName}"></span><br>
+									<span th:text="'P' + ${requestInProgress.getPriority()}"></span>
+							</a></td>
 						</tr>
 
 					</tbody>
@@ -76,18 +82,20 @@
 					</thead>
 					<tbody>
 						<tr th:each="requestResolved: ${requestResolved}">
-							<td class="text-center">
-								<a th:href="@{'/maintenance/requests/'+ ${requestResolved.getId()}}"
-								 role="button">
-									<span th:text="${requestResolved.subject}" ></span><br>
-									<span th:text="'by ' + ${requestResolved.fullName}" ></span><br>
-								</a>
-							</td>
+							<td class="text-center"><a
+								th:href="@{'/maintenance/requests/'+ ${requestResolved.getId()}}"
+								role="button"> <span th:text="${requestResolved.subject}"></span><br>
+									<span th:text="'by ' + ${requestResolved.fullName}"></span><br>
+							</a></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
+	<h4 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h4>
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Sign Out" />
+	</form>
 </body>
 </html>
