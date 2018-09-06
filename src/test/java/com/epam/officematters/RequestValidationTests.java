@@ -34,5 +34,21 @@ public class RequestValidationTests {
 		service.register(new Request("john doe", "john", "problem", "something isn't working"));
 	}
 	
+	@Test(expected = ConstraintViolationException.class)
+	public void test_registrationWithLessThanThreeCharactersSubject_fails() throws RequestAlreadyExistsException {
+		service.register(new Request("john doe", "john@doe.com", "pr", "something isn't working"));
+	}
+	
+	@Test(expected = ConstraintViolationException.class)
+	public void test_registrationWithMoreThanFifteenCharactersSubject_fails() throws RequestAlreadyExistsException {
+		service.register(new Request("john doe", "john@doe.com", "fifteencharactersarenot"
+				+ "toomuch", "something isn't working"));
+	}
+	
+	@Test(expected = ConstraintViolationException.class)
+	public void test_registrationWithLessThanFiveCharactersDescription_fails() throws RequestAlreadyExistsException {
+		service.register(new Request("john doe", "john@doe.com", "problem", "nope"));
+	}
+	
 
 }

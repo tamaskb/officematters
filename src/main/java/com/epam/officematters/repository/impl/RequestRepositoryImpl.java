@@ -24,24 +24,21 @@ public class RequestRepositoryImpl implements RequestRepository {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	private final RowMapper<Request> requestMapper = new RowMapper<Request>() {
-
-		public Request mapRow(ResultSet rs, int rowNum) throws SQLException {
-			Request r = new Request();
-			r.setId(rs.getInt("id"));
-			r.setFullName(rs.getString("name"));
-			r.setEmailAddress(rs.getString("email"));
-			r.setSubject(rs.getString("subject"));
-			r.setDescription(rs.getString("description"));
-			r.setProgressStatus(rs.getInt("progress"));
-			r.setPriority(rs.getInt("priority"));
-			return r;
-		}
-	};
+	private final RowMapper<Request> requestMapper = (rs, rowNum) -> {
+        Request r = new Request();
+        r.setId(rs.getInt("id"));
+        r.setFullName(rs.getString("name"));
+        r.setEmailAddress(rs.getString("email"));
+        r.setSubject(rs.getString("subject"));
+        r.setDescription(rs.getString("description"));
+        r.setProgressStatus(rs.getInt("progress"));
+        r.setPriority(rs.getInt("priority"));
+        return r;
+    };
 
 	@Override
 	@Transactional
-	public void save(Request request) {
+	public Request save(Request request) {
 
 		logger.info("saving now: " + request);
 
@@ -50,6 +47,7 @@ public class RequestRepositoryImpl implements RequestRepository {
 		request.setPriority(0);
 		jdbcTemplate.update(sql, request.getFullName(), request.getEmailAddress(), request.getSubject(),
 				request.getDescription());
+		return request;
 	}
 
 	@Override

@@ -12,7 +12,7 @@ import com.epam.officematters.model.Request;
 @Validated
 public interface RequestRepository {
 	
-	void save (@NotNull @Valid Request request);
+	Request save (@NotNull @Valid Request request);
 	
 	Request findRequestById(int id);
 	

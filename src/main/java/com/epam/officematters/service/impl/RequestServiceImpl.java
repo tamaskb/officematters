@@ -25,16 +25,16 @@ public class RequestServiceImpl implements RequestService {
 
 	@Override
 	@Transactional
-	public void register(Request request) throws RequestAlreadyExistsException {
+	public Request register(Request request) throws RequestAlreadyExistsException {
 
 		logger.info("Registering request: {}", request);
 
 		try {
-			repository.save(request);
+			return repository.save(request);
 		} catch (RuntimeException duplicate) { // FIXME: add proper exception type
-
 			throw new RequestAlreadyExistsException("This request already exists");
 		}
+
 	}
 
 	@Override

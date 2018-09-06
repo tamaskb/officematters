@@ -13,7 +13,7 @@ import com.epam.officematters.service.exception.RequestAlreadyExistsException;
 @Validated
 public interface RequestService {
 
-	void register(@NotNull @Valid Request request) throws RequestAlreadyExistsException;
+	Request register(@NotNull @Valid Request request) throws RequestAlreadyExistsException;
 
 	Request getRequestById(int id);
 
